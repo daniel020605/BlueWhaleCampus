@@ -1,0 +1,12 @@
+<!--pages/loading/loading.wxml-->
+<!-- <text>pages/loading/loading.wxml</text> -->
+<view class="appname">
+  <image class="namepic" src="../asset/Name.png" ></image>
+</view>
+<view class="btn1" bindtap="goToPageTodo" style="position: relative; left: 50rpx; top: -37rpx">
+ToDo-List
+</view>
+<view class="btn2" bindtap="goToPageStudy"
+style="position: relative; left: 372rpx; top: -220rpx">
+沉浸式学习
+</view>

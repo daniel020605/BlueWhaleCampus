@@ -1,0 +1,33 @@
+<!--pages/index-op1/index-op1.wxml-->
+<view class='tablist'>
+  <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
+    <text>{{item}}</text>
+  </view>
+</view>
+
+<view class='content'>
+<!-- <text>{{tabList[current]}}</text> -->
+</view>
+<!--  搜索框  -->
+<view class="search_box">
+	<view class='search'>
+		<input type='text' placeholder='输入你想要的内容' value="{{inputValue}}" bindinput='inputBind' bindconfirm='addsearch'></input>
+		<image src='../../image/搜索 (2).png' bindtap='addsearch'></image>
+	</view>
+</view>
+
+<!-- 未完成 -->
+<view>未完成{{ValueList.length}}</view>
+<view class="wei_box" wx:for="{{ValueList}}" wx:key="index">
+	<icon type="{{item.iSshow?'success':'circle'}}" bindtap='nolist' data-iSshow="{{item.iSshow}}" data-index="{{index}}"></icon><text>{{item.inputValue}}</text>
+	<icon type="cancel" bindtap='nodelete' data-index="{{index}}"></icon>
+</view>
+
+<!-- 已完成 -->
+<view>已完成{{yesList.length}}</view>
+<view class="wei_box" wx:for="{{yesList}}" wx:key="index">
+	<icon type="{{item.iSshow?'success':'circle'}}" bindtap='yeslist' data-iSshow="{{item.iSshow}}" data-index="{{index}}"></icon><text>{{item.inputValue}}</text>
+	<icon type="cancel" bindtap='yesdelete'></icon>
+</view>
+
+<!-- <view class="wei_box_quan"><icon type="{{iSshow?'success':'circle'}}" data-iSshow="{{iSshow}}" bindtap='quanxuan'></icon>全选</view> -->
