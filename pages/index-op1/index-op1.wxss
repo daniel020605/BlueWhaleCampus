@@ -3,12 +3,17 @@ page {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background-image: linear-gradient( 135deg, #e4f4ff 10%, #82bbe4 100%);
 }
 
 .tablist {
   display: flex;
   background: #0a62d0;
     height: 80rpx;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
 }
 
 .tablist .item {
@@ -37,16 +42,18 @@ page {
 }
 
 .content{
-    height: 100%;
+    height: 7%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .search_box{
   width: 100%; 
-  background-color: pink;
+  background-color: #0a62d0;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
+  position: absolute;
+  top: auto;
 }
 .search {
   display: flex;
@@ -72,25 +79,61 @@ page {
 
 /* 搜索框小图标 */
 .search image {
-  width: 40rpx;
-  height: 40rpx;
-  padding-right: 20rpx;
+  position: relative;
+  width: 90rpx;
+  height: 90rpx;
+  padding-right: 0rpx;
 }
 
 /*未完成*/
-.wei_box{
+.notYet{
+  margin-left:auto;
+  margin-right: auto;
+}
+.hasBeen{
+  margin-left:auto;
+  margin-right: auto;
+}
+.notYetBox{
+  position: relative;
   width: 80%;
-  margin: 0 auto;
-  border: 1px solid #cdcdcd;
-  height: 5000rpx;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rpx;
+  align-items: center;
+  border: 1px solid #ffffff;
+  height: 50rpx;
+  border-radius: 50rpx;
   display: flex;
   justify-content: space-between;
+  /* background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%); */
+  color:#ffffff;
+  background-image: linear-gradient( 135deg, #EE9AE5 10%, #5961F9 100%);
 }
-.wei_box_quan{
+.hasBeenBox{
+  position: relative;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rpx;
+  align-items: center;
+  border: 1px solid #ffffff;
+  height: 50rpx;
+  border-radius: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  /* background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%); */
+  color:#ffffff;
+  background: #bdc3c7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #bdc3c7,#2c3e50);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right,  #bdc3c7,#2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+}
+/* .wei_box_quan{
   position: fixed;
   bottom: 0;
   width: 100%;
   height: 80rpx;
+  border-radius: 50rpx;
   display: flex;
   align-items: center;
-}
+} */

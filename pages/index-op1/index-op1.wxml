@@ -11,21 +11,21 @@
 <!--  搜索框  -->
 <view class="search_box">
 	<view class='search'>
-		<input type='text' placeholder='输入你想要的内容' value="{{inputValue}}" bindinput='inputBind' bindconfirm='addsearch'></input>
-		<image src='../../image/搜索 (2).png' bindtap='addsearch'></image>
+		<input type='text' placeholder='输入待办事项' value="{{inputValue}}" bindinput='inputBind' bindconfirm='addsearch'></input>
+		<image src='../asset/TodoAdd.png' bindtap='addsearch'></image>
 	</view>
 </view>
 
 <!-- 未完成 -->
-<view>未完成{{ValueList.length}}</view>
-<view class="wei_box" wx:for="{{ValueList}}" wx:key="index">
-	<icon type="{{item.iSshow?'success':'circle'}}" bindtap='nolist' data-iSshow="{{item.iSshow}}" data-index="{{index}}"></icon><text>{{item.inputValue}}</text>
-	<icon type="cancel" bindtap='nodelete' data-index="{{index}}"></icon>
+<view class="notYet">未完成[{{ValueList.length}}]</view>
+<view class="notYetBox" wx:for="{{ValueList}}" wx:key="index">
+	<icon type="{{item.iSshow?'success':'circle'}}" bindtap='nolist' color='#ffffff' data-iSshow="{{item.iSshow}}" data-index="{{index}}"></icon><text>{{item.inputValue}}</text>
+	<icon type="cancel" bindtap='nodelete' color="#DC143C" data-index="{{index}}"></icon>
 </view>
 
 <!-- 已完成 -->
-<view>已完成{{yesList.length}}</view>
-<view class="wei_box" wx:for="{{yesList}}" wx:key="index">
+<view class="hasBeen">已完成[{{yesList.length}}]</view>
+<view class="hasBeenBox" wx:for="{{yesList}}" wx:key="index">
 	<icon type="{{item.iSshow?'success':'circle'}}" bindtap='yeslist' data-iSshow="{{item.iSshow}}" data-index="{{index}}"></icon><text>{{item.inputValue}}</text>
 	<icon type="cancel" bindtap='yesdelete'></icon>
 </view>
