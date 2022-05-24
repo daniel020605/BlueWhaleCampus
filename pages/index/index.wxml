@@ -14,3 +14,6 @@ style="position: relative; left: 372rpx; top: -220rpx">
 style="position: relative; left: 182rpx; top: -110rpx; width: 276rpx; height: 64rpx; display: flex; box-sizing: border-box">
 其他功能
 </view>
+
+<view class="copyright">By.没有对象没什么不队
+</view>
