@@ -3,17 +3,19 @@
 <view class="appname">
   <image class="namepic" src="../asset/Name.png" ></image>
 </view>
-<view class="btn1" bindtap="goToPageTodo" style="position: relative; left: 50rpx; top: -37rpx">
+<view class="btn1" bindtap="goToPageTodo" style="position: relative; left: 5%;">
 ToDo-List
 </view>
 <view class="btn2" bindtap="goToPageStudy"
-style="position: relative; left: 372rpx; top: -220rpx">
+ style="position: relative; top: -181rpx; left: -33rpx">
 沉浸式学习
 </view>
 <view class="btn3" bindtap="goToPageOthers"
-style="position: relative; left: 182rpx; top: -110rpx; width: 276rpx; height: 64rpx; display: flex; box-sizing: border-box">
+ style="position: relative; left: -1rpx; top: -182rpx">
 其他功能
 </view>
-
-<view class="copyright">By.没有对象没什么不队
+<view class="backblock">
 </view>
+<view class="copyright"   style="display: inline"><text>By.没有对象没什么不队</text>
+</view>
+

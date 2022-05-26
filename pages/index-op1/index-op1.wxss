@@ -8,7 +8,7 @@ page {
 
 .tablist {
   display: flex;
-  background: #0a62d0;
+  background: rgb(19, 199, 175);
     height: 80rpx;
     position: absolute;
     left: 0%;
@@ -27,7 +27,8 @@ page {
 }
 
 .tablist .item.select {
-    color: #f3d849;
+    color: rgb(231, 101, 26);
+    font-weight: 1000;
 }
 
 .tablist .item.select::after {
@@ -38,7 +39,7 @@ page {
     left: 0;
     bottom: 0;
     right: 0;
-    background: #f3d849;
+    background: rgb(231, 101, 26);
 }
 
 .content{
@@ -49,7 +50,7 @@ page {
 }
 .search_box{
   width: 100%; 
-  background-color: #0a62d0;
+  background-color: rgb(19, 199, 175);
   padding-top: 10rpx;
   padding-bottom: 10rpx;
   position: absolute;

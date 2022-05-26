@@ -5,32 +5,66 @@ page{
   display: flex;
   flex-direction: column;
   padding: 0 62rpx;
-  background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%); 
+  background-color:rgb(79,114,244);
+  /* linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);  */
     /* background-image: url("../asset/loading.png"); */
   
 }
 .appname{
-  margin-top: 15%;
+  margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
 }
+.backblock{
+  position:absolute;
+  background-color: #ffffff;
+  left: 10%;
+  right: 10%;
+  top: 40%;
+  width: 80%;
+  height: 50%;
+  opacity:0.5;
+  border-radius: 50rpx;
+  z-index:-100;
+
+}
 .btn1{
+  position: relative;
+  margin-top: auto;
+  margin-right: auto;
   width:30%;
   height: 15%;
   margin-top:0rpx;
   background-color: rgb(19, 199, 175);
   color: white;
   border-radius: 20rpx;
-  display: flex;
-  flex-direction: row;
+  display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .btn2{
+  position: relative;
+  margin-left: auto;
+  margin-top: auto;
+  width:30%;
+  height: 15%;
+  margin-top:0rpx;
+  background-color: rgb(82, 19, 199);
+  color: white;
+  border-radius: 20rpx;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btn3{
+  position: relative;
+  margin: auto;
   width:30%;
   height: 15%;
   margin-top:1rpx;
-  background-color: rgb(82, 19, 199);
+  background-color: rgb(143, 194, 49);
   color: white;
   border-radius: 20rpx;
   display: flex;
@@ -38,19 +72,10 @@ page{
   align-items: center;
   justify-content: center;
 }
-.btn3{
-  width:30%;
-  height: 15%;
-  margin-top:1rpx;
-  background-color: rgb(143, 194, 49);
-  color: white;
-  border-radius: 50rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.copyright{
 
-  color: grey;
+.copyright{
+  position: relative;
+  margin: auto;
+  font-weight: 500;
+  color: rgb(162, 170, 170);
 }

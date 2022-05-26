@@ -18,14 +18,14 @@
 
 <!-- 未完成 -->
 <view class="notYet">未完成[{{ValueList.length}}]</view>
-<view class="notYetBox" wx:for="{{ValueList}}" wx:key="index">
+<view class="notYetBox" wx:for="{{ValueList}}" wx:key="index" style="opacity:{{0.6}}" >
 	<icon type="{{item.iSshow?'success':'circle'}}" bindtap='nolist' color='#ffffff' data-iSshow="{{item.iSshow}}" data-index="{{index}}"></icon><text>{{item.inputValue}}</text>
 	<icon type="cancel" bindtap='nodelete' color="#DC143C" data-index="{{index}}"></icon>
 </view>
 
 <!-- 已完成 -->
 <view class="hasBeen">已完成[{{yesList.length}}]</view>
-<view class="hasBeenBox" wx:for="{{yesList}}" wx:key="index">
+<view class="hasBeenBox" wx:for="{{yesList}}" wx:key="index" style="opacity:{{0.6}}" >
 	<icon type="{{item.iSshow?'success':'circle'}}" bindtap='yeslist' data-iSshow="{{item.iSshow}}" data-index="{{index}}"></icon><text>{{item.inputValue}}</text>
 	<icon type="cancel" bindtap='yesdelete'></icon>
 </view>

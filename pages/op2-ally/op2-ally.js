@@ -1,20 +1,11 @@
-// pages/loading/loading.js 
+// pages/op2-ally/op2-ally.js
 Page({
-  goToPageTodo: function (){
-    wx.navigateTo({
-      url: '/pages/index-op1',
-    })
-  },
-  goToPageStudy: function (){
-    wx.navigateTo({
-      url: '/pages/index-op2',
-    })
-  },
+
   /**
    * 页面的初始数据
    */
   data: {
-    
+
   },
 
   /**
