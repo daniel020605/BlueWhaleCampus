@@ -9,11 +9,17 @@ App({
     // 登录
     wx.login({
       success: res => {
+        wx.request({
+          url: 'src-main-java-com.example.demo-logincontroller',
+          data:res.code,
+        })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        
       }
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    serverUrl: 'src-main-java-com.example.demo-logincontroller'
   }
 })

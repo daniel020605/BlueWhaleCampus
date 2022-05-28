@@ -7,7 +7,8 @@
     "pages/index-op1/index-op1",
     "pages/home/home",
     "pages/index-op2/index-op2",
-    "pages/op2-ally/op2-ally"
+    "pages/op2-ally/op2-ally",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
