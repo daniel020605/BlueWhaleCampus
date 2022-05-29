@@ -1,5 +1,4 @@
 class todoElement{
-  
   ownerid = ''
   isCompleted = 0
   ownerName = ''
