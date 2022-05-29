@@ -4,15 +4,18 @@
   <image class="namepic" src="../asset/Name.png" ></image>
 </view>
 <view class="btn1" bindtap="goToPageTodo" style="position: relative; left: 5%;">
-ToDo-List
+  <image src="../asset/TodoListIMG.gif" style="width: 200rpx;height:250rpx;"></image>
+  <text>TodoList</text>
 </view>
 <view class="btn2" bindtap="goToPageStudy"
  style="position: relative; top: -181rpx; left: -33rpx">
-沉浸式学习
+<image src="../asset/TomatoIMG.png" style="width: 150rpx;"></image>
+<text>番茄钟</text>
 </view>
 <view class="btn3" bindtap="goToPageOthers"
  style="position: relative; left: -1rpx; top: -182rpx">
-其他功能
+<image src="../asset/MoreIMG.png" style="width: 250rpx; height: 180rpx; display: block; position: relative; left: 46rpx; top: 1rpx" ></image>
+<text style="position: relative; left: -68rpx; top: 132rpx">更多工具</text>
 </view>
 <view class="backblock">
 </view>
