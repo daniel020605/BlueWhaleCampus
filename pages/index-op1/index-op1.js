@@ -1,4 +1,14 @@
+class todoElement{
+  
+  ownerid = ''
+  isCompleted = 0
+  ownerName = ''
+  contentId = ''
+  content = ''
+  constructor(){}
+}
 Page({
+  
   data: {
       tabList: ['ToDo', '统计', '我的'],
       current: 0,//当前选中的Tab项
