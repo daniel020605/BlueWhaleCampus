@@ -1,173 +1,190 @@
+//index.js  
+//获取应用实例 
+const app = getApp()
 const util = require('../../utils/util.js')
-const defaultLogName = {
-  work: '工作',
-  rest: '休息'
-}
-const actionName = {
-  stop: '停止',
-  start: '开始'
-}
-
-const initDeg = {
-  left: 45,
-  right: -45,
-}
 
 Page({
-
   data: {
-    remainTimeText: '',
-    timerType: 'work',
-    log: {},
-    completed: false,
-    isRuning: false,
-    leftDeg: initDeg.left,
-    rightDeg: initDeg.right
+    clockShow:false,
+    clockHeight:0,
+    time:'5',
+    mTime:300000,
+    timeStr:'05:00',
+    rate:'',
+    timer:null,
+    cateArr:[
+      {
+        icon:'work',
+        text:'工作'
+      },
+      {
+        icon:'study',
+        text:"学习",
+      },
+      {
+        icon:'think',
+        text:'思考'
+      },
+      {
+        icon:'write',
+        text:'写作'
+      },
+      {
+        icon:'sport',
+        text:'运动'
+      },
+      {
+        icon:'read',
+        text:"阅读"
+      }
+    ],
+    cateActive:'0',
+    okShow:false,
+    pauseShow:true,
+    continueCancleShow:false
   },
+  //事件处理函数
+  bindViewTap: function() {
+    wx.navigateTo({
+      url: '../logs/logs'
+    })
+  },
+  onLoad: function () {
+    // 750rpx 
+    var res = wx.getSystemInfoSync();
+    var rate = 750 / res.windowWidth;
 
-  onShow: function() {
-    if (this.data.isRuning) return
-    let workTime = util.formatTime(wx.getStorageSync('workTime'), 'HH')
-    let restTime = util.formatTime(wx.getStorageSync('restTime'), 'HH')
+              //  ? / res.windowHeight;
     this.setData({
-      workTime: workTime,
-      restTime: restTime,
-      remainTimeText: workTime + ':00'
+      rate: rate,
+      clockHeight: rate* res.windowHeight
     })
   },
-
-  startTimer: function(e) {
-    let startTime = Date.now()
-    let isRuning = this.data.isRuning
-    let timerType = e.target.dataset.type
-    let showTime = this.data[timerType + 'Time']
-    let keepTime = showTime * 60 * 1000
-    let logName = this.logName || defaultLogName[timerType]
-
-    if (!isRuning) {
-      this.timer = setInterval((function() {
-        this.updateTimer()
-        this.startNameAnimation()
-      }).bind(this), 1000)
-    } else {
-      this.stopTimer()
-    }
-
+  getUserInfo: function(e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
     this.setData({
-      isRuning: !isRuning,
-      completed: false,
-      timerType: timerType,
-      remainTimeText: showTime + ':00',
-      taskName: logName
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
     })
-
-    this.data.log = {
-      name: logName,
-      startTime: Date.now(),
-      keepTime: keepTime,
-      endTime: keepTime + startTime,
-      action: actionName[isRuning ? 'stop' : 'start'],
-      type: timerType
-    }
-
-    this.saveLog(this.data.log)
   },
-
-  startNameAnimation: function() {
-    let animation = wx.createAnimation({
-      duration: 450
-    })
-    animation.opacity(0.2).step()
-    animation.opacity(1).step()
+  slideChange: function (e) {
     this.setData({
-      nameAnimation: animation.export()
+      time:e.detail.value
     })
   },
-
-  stopTimer: function() {
-    // reset circle progress
+  clickCate:function (e) {
     this.setData({
-      leftDeg: initDeg.left,
-      rightDeg: initDeg.right
+      cateActive:e.currentTarget.dataset.index
     })
-
-    // clear timer
-    this.timer && clearInterval(this.timer)
   },
-
-  updateTimer: function() {
-    let log = this.data.log
-    let now = Date.now()
-    let remainingTime = Math.round((log.endTime - now) / 1000)
-    let H = util.formatTime(Math.floor(remainingTime / (60 * 60)) % 24, 'HH')
-    let M = util.formatTime(Math.floor(remainingTime / (60)) % 60, 'MM')
-    let S = util.formatTime(Math.floor(remainingTime) % 60, 'SS')
-    let halfTime
-
-    // update text
-    if (remainingTime > 0) {
-      let remainTimeText = (H === "00" ? "" : (H + ":")) + M + ":" + S
-      this.setData({
-        remainTimeText: remainTimeText
-      })
-    } else if (remainingTime == 0) {
-      this.setData({
-        completed: true
-      })
-      this.stopTimer()
-      return
-    }
-
-    // update circle progress
-    halfTime = log.keepTime / 2
-    if ((remainingTime * 1000) > halfTime) {
-      this.setData({
-        leftDeg: initDeg.left - (180 * (now - log.startTime) / halfTime)
-      })
-    } else {
-      this.setData({
-        leftDeg: -135
-      })
-      this.setData({
-        rightDeg: initDeg.right - (180 * (now - (log.startTime + halfTime)) / halfTime)
-      })
-    }
+  start: function () {
+    this.setData({
+      clockShow:true,
+      mTime:this.data.time*60*1000,
+      timeStr:parseInt(this.data.time) >= 10 ? this.data.time+':00' : '0'+this.data.time+':00'
+    })
+    this.drawBg();
+    this.drawActive();
   },
-
-  changeLogName: function(e) {
-    this.logName = e.detail.value
+  drawBg:function () {
+    var lineWidth = 6 / this.data.rate; // px
+    var ctx =wx.createCanvasContext('progress_bg');
+    ctx.setLineWidth(lineWidth);
+    ctx.setStrokeStyle('#000000');
+    ctx.setLineCap('round');
+    ctx.beginPath();
+    ctx.arc(400/this.data.rate/2,400/this.data.rate/2,400/this.data.rate/2- 2* lineWidth,0,2*Math.PI,false);
+    ctx.stroke();
+    ctx.draw();
   },
-
-  saveLog: function(log) {
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(log)
-    wx.setStorageSync('logs', logs)
-  }
-})
-
-const promisic = function (func) {
-  return function (params = {}) {
-    return new Promise((resolve, reject) => {
-      const args = Object.assign(params, {
-        success: (res) => {
-          resolve(res);
-        },
-        fail: (error) => {
-          reject(error);
-        }
+  drawActive: function () {
+    var _this = this;
+    var timer = setInterval(function (){
+      // 1.5 3.5
+      // 0 2 
+      // 300000 100
+      // 3000
+      // 2 / 3000
+      var angle = 1.5 + 2*(_this.data.time*60*1000 - _this.data.mTime)/(_this.data.time*60*1000);
+      var currentTime = _this.data.mTime - 100
+      _this.setData({
+          mTime: currentTime
       });
-      func(args);
-    });
-  };
-},
-class Http {
-  // 同步Http请求
-  static async asyncRequest(url, method, data, backMethod) {
-      let res = await promisic(wx.request)({
-          url: url,
-          method: method,
-          data: data,
-      })
-      backMethod(res)
+      if(angle < 3.5) {
+        if(currentTime % 1000 == 0) {
+          var timeStr1 = currentTime / 1000; // s
+          var timeStr2 = parseInt(timeStr1 / 60) // m
+          var timeStr3 = (timeStr1 - timeStr2 * 60) >= 10 ? (timeStr1 - timeStr2 * 60) : '0' + (timeStr1 - timeStr2 * 60);
+          var timeStr2 = timeStr2 >= 10 ? timeStr2:'0'+timeStr2;
+          _this.setData({
+            timeStr:timeStr2+':'+timeStr3
+          })
+        }
+        var lineWidth = 6 / _this.data.rate; // px
+        var ctx = wx.createCanvasContext('progress_active');
+        ctx.setLineWidth(lineWidth);
+        ctx.setStrokeStyle('#ffffff');
+        ctx.setLineCap('round');
+        ctx.beginPath();
+        ctx.arc(400 / _this.data.rate / 2, 400 / _this.data.rate / 2, 400 / _this.data.rate / 2 - 2 * lineWidth, 1.5 * Math.PI, angle * Math.PI, false);
+        ctx.stroke();
+        ctx.draw();
+      } else {
+        var logs = wx.getStorageSync('logs') || [];
+        logs.unshift({
+          date: util.formatTime(new Date),
+          cate: _this.data.cateActive,
+          time: _this.data.time
+        });
+        wx.setStorageSync('logs', logs);
+        _this.setData({
+          timeStr:'00:00',
+          okShow:true,
+          pauseShow: false,
+          continueCancleShow: false        
+        })
+        clearInterval(timer);
+      }
+    },100);
+    _this.setData({
+      timer:timer
+    })
+  },
+  pause: function () {
+    clearInterval(this.data.timer);
+    this.setData({
+      pauseShow: false,
+      continueCancleShow: true,
+      okShow: false
+    })
+  },
+  continue: function () {
+    this.drawActive();
+    this.setData({
+      pauseShow: true,
+      continueCancleShow: false,
+      okShow: false
+    })    
+  },
+  cancle: function (){
+    clearInterval(this.data.timer);
+    this.setData({
+      pauseShow: true,
+      continueCancleShow: false,
+      okShow: false,
+      clockShow:false      
+    })
+  },
+  ok: function () {
+    clearInterval(this.data.timer);
+    this.setData({
+      pauseShow: true,
+      continueCancleShow: false,
+      okShow: false,
+      clockShow: false
+    })    
   }
-}
+
+
+})
