@@ -1,8 +1,8 @@
 class todoElement{
-  ownerid = ''
+  ownerid = 0
   isCompleted = 0
   ownerName = ''
-  contentId = ''
+  contentId = 0
   content = ''
   constructor(){}
 }
@@ -38,7 +38,8 @@ Page({
       that.setData({
         inputValue: e.detail.value
       })
-      this.save()
+  wx.setStorageSync('ValueList', this.data.ValueList)
+  wx.setStorageSync('yesList', this.data.yesList)
     },
   // 回车添加
     addsearch: function (e) {
@@ -52,7 +53,8 @@ Page({
           ValueList: this.data.ValueList,
           inputValue: ""
         })
-        this.save()
+    wx.setStorageSync('ValueList', this.data.ValueList)
+    wx.setStorageSync('yesList', this.data.yesList)
       },
       // 未完成到完成
   nolist: function (e) {
@@ -65,7 +67,8 @@ Page({
       ValueList: this.data.ValueList,
       yesList: this.data.yesList,
     })
-    this.save()
+wx.setStorageSync('ValueList', this.data.ValueList)
+wx.setStorageSync('yesList', this.data.yesList)
   },
   // 未完成点击删除
   nodelete: function (e) {
@@ -74,7 +77,8 @@ Page({
     this.setData({
       ValueList: this.data.ValueList
     })
-    this.save()
+wx.setStorageSync('ValueList', this.data.ValueList)
+wx.setStorageSync('yesList', this.data.yesList)
   },
  // 已完成到未完成
   yeslist: function (e) {
@@ -86,7 +90,8 @@ Page({
         ValueList: this.data.ValueList,
         yesList: this.data.yesList,
       })
-      this.save()
+  wx.setStorageSync('ValueList', this.data.ValueList)
+  wx.setStorageSync('yesList', this.data.yesList)
     },
    //已完成的删除
     yesdelete: function (e) {
@@ -94,6 +99,8 @@ Page({
         this.setData({
           yesList: this.data.yesList
         })
+    wx.setStorageSync('ValueList', this.data.ValueList)
+    wx.setStorageSync('yesList', this.data.yesList)
       },
   /**
    * Tab的点击切换事件
