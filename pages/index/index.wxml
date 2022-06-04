@@ -14,7 +14,7 @@
 </view>
 <view class="btn3" bindtap="goToPageOthers"
  style="position: relative; left: -1rpx; top: -182rpx">
-<image src="../asset/MoreIMG.png" style="width: 250rpx; height: 180rpx; display: block; position: relative; left: 46rpx; top: 1rpx" ></image>
+<image src="../asset/MoreIMG.png" style="width: 250rpx; height: 180rpx; display: block; position: relative; left: 58rpx; top: 1rpx" ></image>
 <text style="position: relative; left: -68rpx; top: 132rpx">更多工具</text>
 </view>
 <view class="backblock">

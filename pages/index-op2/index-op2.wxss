@@ -1,11 +1,19 @@
 /**index.wxss**/
 page {
   overflow:  hidden;
-  background: #aee8ff;
-  
-}.tablist {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(90deg, #74a2eb, #b69fbd, #dabe9c, #b69fbd, #74a2eb);
+  background-size: 1400% 300%;
+  animation: dynamics 2s ease infinite;
+  -webkit-animation: dynamics 2s ease infinite;
+  -moz-animation: dynamics 2s ease infinite;
+}
+
+
+.tablist {
   display:block;
-  background: rgb(187, 235, 195);
+  background: linear-gradient(90deg, #bcd1f3, #e7d7ec, #ddd0c0, #e7d7ec, #bcd1f3);
   height: 80rpx;
   position: static;
   left: 0%;
@@ -24,6 +32,24 @@ page {
   opacity:0.5;
   border-radius: 50rpx;
   z-index:-100;
+  background: linear-gradient(90deg, #bcd1f3, #e7d7ec, #ddd0c0, #e7d7ec, #bcd1f3);
+  background-size: 1400% 300%;
+  animation: dynamics 2s ease infinite;
+  -webkit-animation: dynamics 2s ease infinite;
+  -moz-animation: dynamics 2s ease infinite;
+}
+@keyframes backblock {
+  0% {
+      background-position: 0% 0%;
+  }
+
+  50% {
+      background-position: 50% 100%;
+  }
+
+  100% {
+      background-position: 100% 0%;
+  }
 }
 .slider {
   width: 650rpx;
@@ -43,7 +69,7 @@ page {
   font-size: 30rpx;
   height: 50rpx;
   line-height: 50rpx;
-  color: #999999;
+  color: #575757;
 }
 .task_cate {
   
@@ -85,7 +111,20 @@ page {
 }
 .clock {
   overflow: hidden;
-  background: #E7624F;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 200% 200%;
+  animation: gradientBG 5s ease infinite;
+}
+@keyframes clock {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 .progress {
   width: 400rpx;

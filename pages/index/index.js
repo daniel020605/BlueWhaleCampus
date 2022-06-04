@@ -13,6 +13,11 @@ Page({
   /**
    * 页面的初始数据
    */
+  goToPageOthers:function(){
+    wx.navigateTo({
+      url: '/pages/index-op3/index-op3',
+    })
+  },
   data: {
  
   },

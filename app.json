@@ -8,7 +8,9 @@
     "pages/home/home",
     "pages/index-op2/index-op2",
     "pages/op2-ally/op2-ally",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/index-op3/index-op3",
+    "pages/op3-ally/op3-ally"
   ],
   "window": {
     "backgroundTextStyle": "light",

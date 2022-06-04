@@ -2,8 +2,8 @@
 <view class='tablist'>
     <text class="slogan" style="position: relative; left: 138rpx; top: 15rpx">明天的你将会感谢今天努力的自己</text>
 </view>
-<view class="backblock">
-</view>
+<div class="backblock">
+</div>
 <view hidden='{{clockShow}}'>
   <view class='slider'>
   <slider min='1' max='60' show-value activeColor="#E7624F" backgroundColor='#666666' value='{{time}}' bindchange='slideChange'></slider>
